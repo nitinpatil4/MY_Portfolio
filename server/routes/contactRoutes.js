@@ -1,0 +1,14 @@
+const express = require('express');
+const router = express.Router();
+const {
+  sendMessage,
+  getMessages,
+  deleteMessage,
+} = require('../controllers/contactController');
+const { protect } = require('../middleware/authMiddleware');
+
+router.post('/', sendMessage);
+router.get('/', protect, getMessages);
+router.delete('/:id', protect, deleteMessage);
+
+module.exports = router;

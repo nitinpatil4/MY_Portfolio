@@ -1,0 +1,2034 @@
+/* =========================================================
+   NITIN PATIL — INTERACTIVE DEVELOPER PORTFOLIO
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-primary: #06070b;
+  --bg-secondary: #0b0d13;
+  --bg-card: rgba(15, 18, 28, 0.72);
+
+  --accent: #7c6cff;
+  --accent-2: #6eefff;
+  --accent-hover: #968cff;
+
+  --text-primary: #f5f7ff;
+  --text-muted: #9298aa;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(124, 108, 255, 0.55);
+
+  --success: #43e98b;
+  --error: #ff6678;
+
+  --radius: 16px;
+
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  --transition: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  color: var(--text-primary);
+
+  line-height: 1.6;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(
+      600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(124, 108, 255, 0.07),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(124, 108, 255, 0.09),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(0, 229, 255, 0.045),
+      transparent 25%
+    ),
+    var(--bg-primary);
+}
+
+/* =========================================================
+   FUTURISTIC GRID
+========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      transparent 85%
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      transparent 85%
+    );
+
+  pointer-events: none;
+
+  z-index: -2;
+}
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  width: 500px;
+  height: 500px;
+
+  left: 50%;
+  top: 35%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 108, 255, 0.07),
+      transparent 70%
+    );
+
+  filter: blur(35px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: rgba(124, 108, 255, 0.4);
+
+  color: white;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      var(--accent),
+      var(--accent-2)
+    );
+
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      var(--accent-hover),
+      var(--accent-2)
+    );
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 1rem 3rem;
+
+  background:
+    rgba(6, 7, 11, 0.68);
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.navbar-logo {
+  position: relative;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 1.45rem;
+
+  font-weight: 750;
+
+  letter-spacing: -0.04em;
+
+  transition: var(--transition);
+}
+
+.navbar-logo:hover {
+  transform: translateY(-2px);
+
+  text-shadow:
+    0 0 15px rgba(124, 108, 255, 0.65),
+    0 0 35px rgba(124, 108, 255, 0.25);
+}
+
+.logo-accent {
+  color: var(--accent);
+}
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.navbar-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 2rem;
+
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+.navbar-links a {
+  position: relative;
+
+  color: var(--text-muted);
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.navbar-links a::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: -8px;
+
+  width: 5px;
+
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 12px var(--accent);
+
+  transform:
+    translateX(-50%)
+    scale(0);
+
+  transition: var(--transition);
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: white;
+}
+
+.navbar-links a:hover::before,
+.navbar-links a.active::before {
+  transform:
+    translateX(-50%)
+    scale(1);
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+.navbar-toggle {
+  display: none;
+
+  padding: 0.6rem;
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  border: 1px solid var(--border);
+
+  cursor: pointer;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+
+  width: 23px;
+
+  height: 2px;
+
+  background: white;
+
+  border-radius: 10px;
+
+  transition: 0.3s ease;
+}
+
+.hamburger {
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+}
+
+.hamburger::before {
+  top: -7px;
+}
+
+.hamburger::after {
+  top: 7px;
+}
+
+.hamburger.open {
+  background: transparent;
+}
+
+.hamburger.open::before {
+  transform:
+    rotate(45deg)
+    translate(5px, 5px);
+}
+
+.hamburger.open::after {
+  transform:
+    rotate(-45deg)
+    translate(5px, -5px);
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+main {
+  max-width: 1180px;
+
+  min-height: calc(100vh - 140px);
+
+  margin: 0 auto;
+
+  padding: 4rem 2rem;
+}
+
+.section-title {
+  margin: 0 0 0.6rem;
+
+  font-size: clamp(2rem, 5vw, 3rem);
+
+  line-height: 1.1;
+
+  letter-spacing: -0.045em;
+
+  background:
+    linear-gradient(
+      120deg,
+      #ffffff,
+      #aaa2ff 55%,
+      #6eefff
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+
+  margin-bottom: 3rem;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 720px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 5rem 1rem;
+
+  overflow: hidden;
+}
+
+/* Large rotating ring */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 560px;
+
+  height: 560px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(124, 108, 255, 0.12);
+
+  box-shadow:
+    0 0 100px rgba(124, 108, 255, 0.05);
+
+  animation:
+    heroRing 16s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes heroRing {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.04);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Hero center glow */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 270px;
+
+  height: 270px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 108, 255, 0.17),
+      transparent 70%
+    );
+
+  filter: blur(30px);
+
+  animation:
+    heroPulse 5s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+@keyframes heroPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1.2);
+
+    opacity: 0.9;
+  }
+}
+
+.hero > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+/* =========================================================
+   HERO GREETING
+========================================================= */
+
+.hero-greeting {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #b7b0ff;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  padding: 0.45rem 0.95rem;
+
+  border: 1px solid rgba(124, 108, 255, 0.25);
+
+  background:
+    rgba(124, 108, 255, 0.06);
+
+  border-radius: 50px;
+
+  backdrop-filter: blur(10px);
+}
+
+.hero-greeting::before {
+  content: "";
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--success);
+
+  box-shadow:
+    0 0 10px var(--success);
+
+  animation:
+    onlinePulse 2s infinite;
+}
+
+@keyframes onlinePulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(67, 233, 139, 0.5);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 8px rgba(67, 233, 139, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(67, 233, 139, 0);
+  }
+}
+
+/* =========================================================
+   HERO NAME
+========================================================= */
+
+/*
+  IMPORTANT:
+  If your JSX is:
+
+  <motion.h1>
+    Nitin Patil
+  </motion.h1>
+
+  this styling will work.
+
+  If you use:
+
+  <motion.h1 className="hero-name">
+    <span>Nitin</span>
+    <span>Patil</span>
+  </motion.h1>
+
+  the second set of styles below will apply.
+*/
+
+.hero h1 {
+  font-size: clamp(3.2rem, 8vw, 6.2rem);
+
+  line-height: 1.05;
+
+  margin: 1.4rem 0;
+
+  font-weight: 700;
+
+  letter-spacing: -0.035em;
+
+  word-spacing: 0.12em;
+
+  white-space: nowrap;
+
+  background:
+    linear-gradient(
+      110deg,
+      #ffffff 0%,
+      #bcb6ff 48%,
+      #6eefff 100%
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+
+  filter:
+    drop-shadow(
+      0 12px 35px
+      rgba(124, 108, 255, 0.16)
+    );
+}
+
+/* =========================================================
+   OPTIONAL BETTER NAME STYLE
+========================================================= */
+
+.hero-name {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 0.22em;
+
+  font-size: clamp(3.2rem, 8vw, 6.2rem);
+
+  line-height: 1;
+
+  margin: 1.5rem 0;
+
+  font-weight: 700;
+
+  letter-spacing: -0.045em;
+
+  white-space: nowrap;
+}
+
+.hero-name span:first-child {
+  background:
+    linear-gradient(
+      120deg,
+      #ffffff,
+      #c6c0ff
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+}
+
+.hero-name span:last-child {
+  background:
+    linear-gradient(
+      120deg,
+      #aaa2ff,
+      #6eefff
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+}
+
+/* =========================================================
+   HERO SUBTITLE
+========================================================= */
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+
+  color: var(--text-muted);
+
+  margin: 0 0 1rem;
+
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 620px;
+
+  color: var(--text-muted);
+
+  line-height: 1.8;
+
+  margin: 0 auto 2.5rem;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-actions {
+  display: flex;
+
+  gap: 1rem;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 3rem;
+}
+
+.btn {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0.85rem 1.5rem;
+
+  border-radius: 10px;
+
+  border: 1px solid transparent;
+
+  font-weight: 600;
+
+  font-size: 0.9rem;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.btn::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -120%;
+
+  width: 80%;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition:
+    left 0.6s ease;
+}
+
+.btn:hover::after {
+  left: 140%;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.btn-primary {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      #6255e8
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(124, 108, 255, 0.25);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 15px 45px
+    rgba(124, 108, 255, 0.42);
+}
+
+.btn-outline {
+  color: white;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border-color: var(--border);
+
+  backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+
+  color: var(--accent-2);
+
+  background:
+    rgba(124, 108, 255, 0.07);
+
+  box-shadow:
+    0 10px 35px
+    rgba(124, 108, 255, 0.12);
+}
+
+.btn-danger {
+  background: #dc2626;
+
+  color: white;
+
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* =========================================================
+   HERO SKILLS
+========================================================= */
+
+.hero-skills {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  max-width: 720px;
+}
+
+.skill-pill {
+  padding: 0.45rem 0.85rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  color: var(--text-muted);
+
+  font-size: 0.78rem;
+
+  backdrop-filter: blur(10px);
+
+  transition: var(--transition);
+}
+
+.skill-pill:hover {
+  color: white;
+
+  border-color: var(--accent);
+
+  background:
+    rgba(124, 108, 255, 0.12);
+
+  transform:
+    translateY(-5px)
+    rotate(-1deg);
+
+  box-shadow:
+    0 10px 25px
+    rgba(124, 108, 255, 0.15);
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(300px, 1fr)
+    );
+
+  gap: 1.5rem;
+}
+
+.project-card {
+  position: relative;
+
+  overflow: hidden;
+
+  height: 100%;
+
+  padding: 1.2rem;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.012)
+    );
+
+  backdrop-filter: blur(12px);
+
+  --x: 50%;
+  --y: 50%;
+
+  transition:
+    transform 0.45s
+      cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.45s ease;
+}
+
+/* Cursor spotlight inside card */
+
+.project-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      180px circle at var(--x) var(--y),
+      rgba(124, 108, 255, 0.14),
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.3s ease;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* Animated border */
+
+.project-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -1px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 25%,
+      rgba(124, 108, 255, 0.7),
+      transparent 70%
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 0.4s ease;
+
+  z-index: -1;
+}
+
+.project-card:hover {
+  transform:
+    translateY(-10px)
+    scale(1.012);
+
+  border-color:
+    rgba(124, 108, 255, 0.4);
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.4),
+    0 0 40px
+    rgba(124, 108, 255, 0.08);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-image {
+  width: 100%;
+
+  height: 190px;
+
+  object-fit: cover;
+
+  border-radius: 11px;
+
+  margin-bottom: 1rem;
+
+  border: 1px solid var(--border);
+
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+
+  filter:
+    brightness(1.08)
+    saturate(1.1);
+}
+
+.project-card h3 {
+  margin: 0 0 0.5rem;
+
+  font-size: 1.2rem;
+
+  letter-spacing: -0.025em;
+}
+
+.project-card p {
+  color: var(--text-muted);
+
+  font-size: 0.88rem;
+
+  line-height: 1.7;
+
+  margin-bottom: 0.75rem;
+}
+
+.tech-stack {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.4rem;
+
+  margin: 1rem 0;
+}
+
+.tech-badge {
+  padding: 0.25rem 0.6rem;
+
+  border-radius: 50px;
+
+  color: #aaa2ff;
+
+  background:
+    rgba(124, 108, 255, 0.08);
+
+  border:
+    1px solid
+    rgba(124, 108, 255, 0.16);
+
+  font-size: 0.7rem;
+
+  transition: var(--transition);
+}
+
+.tech-badge:hover {
+  color: white;
+
+  background:
+    rgba(124, 108, 255, 0.18);
+
+  transform: translateY(-2px);
+}
+
+.project-links {
+  display: flex;
+
+  gap: 1rem;
+
+  margin-top: 1.2rem;
+}
+
+.project-links a {
+  color: #aaa2ff;
+
+  text-decoration: none;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.project-links a:hover {
+  color: white;
+
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-content {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 3rem;
+
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text-muted);
+
+  line-height: 1.85;
+
+  margin-bottom: 1.2rem;
+}
+
+.skills-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 1rem;
+}
+
+.skill-card {
+  position: relative;
+
+  padding: 1.3rem;
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  backdrop-filter: blur(10px);
+
+  overflow: hidden;
+
+  transition: var(--transition);
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--border-hover);
+
+  box-shadow:
+    0 20px 40px
+    rgba(0, 0, 0, 0.25);
+}
+
+.skill-card h3 {
+  color: #aaa2ff;
+
+  margin: 0 0 0.8rem;
+
+  font-size: 0.95rem;
+}
+
+.skill-card ul {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+}
+
+.skill-card li {
+  color: var(--text-muted);
+
+  font-size: 0.86rem;
+
+  padding: 0.25rem 0;
+
+  transition: 0.2s ease;
+}
+
+.skill-card li:hover {
+  color: white;
+
+  transform: translateX(5px);
+}
+
+.skill-card li::before {
+  content: "▸ ";
+
+  color: var(--accent);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+  position: relative;
+}
+
+.contact-content {
+  display: grid;
+
+  grid-template-columns:
+    0.85fr 1.15fr;
+
+  gap: 4rem;
+
+  align-items: start;
+}
+
+.contact-details {
+  padding: 2rem;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.2);
+}
+
+.contact-details h3 {
+  margin-top: 0;
+
+  font-size: 1.7rem;
+}
+
+.contact-intro {
+  color: var(--text-muted);
+
+  line-height: 1.75;
+}
+
+.contact-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.8rem;
+
+  margin-top: 1.5rem;
+}
+
+.contact-info-item {
+  padding: 0.9rem;
+
+  border-radius: 10px;
+
+  border: 1px solid transparent;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition: var(--transition);
+}
+
+.contact-info-item:hover {
+  transform: translateX(6px);
+
+  border-color:
+    rgba(124, 108, 255, 0.3);
+
+  background:
+    rgba(124, 108, 255, 0.07);
+}
+
+.contact-label {
+  display: block;
+
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.1em;
+
+  margin-bottom: 3px;
+}
+
+.contact-info-item a {
+  color: white;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+.contact-info-item a:hover {
+  color: var(--accent-2);
+}
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+.contact-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+
+  max-width: 520px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+
+  padding: 1rem;
+
+  border-radius: 11px;
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 0.9rem;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.admin-form input::placeholder,
+.admin-form textarea::placeholder {
+  color: #626979;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+
+  border-color: var(--accent);
+
+  background:
+    rgba(124, 108, 255, 0.05);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(124, 108, 255, 0.08),
+    0 10px 35px
+      rgba(0, 0, 0, 0.15);
+}
+
+.contact-form textarea {
+  min-height: 160px;
+
+  resize: vertical;
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+/* =========================================================
+   STATUS MESSAGES
+========================================================= */
+
+.status-message {
+  color: var(--text-muted);
+
+  margin-top: 1rem;
+}
+
+.status-message.success {
+  color: var(--success);
+}
+
+.status-message.error {
+  color: var(--error);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  position: relative;
+
+  text-align: center;
+
+  padding: 3rem 2rem;
+
+  border-top: 1px solid var(--border);
+
+  background:
+    rgba(7, 8, 13, 0.8);
+
+  backdrop-filter: blur(15px);
+}
+
+.footer-content {
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+.footer-social {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 0.7rem;
+
+  margin-bottom: 1rem;
+}
+
+.footer-social a {
+  padding: 0.5rem 0.8rem;
+
+  color: var(--text-muted);
+
+  text-decoration: none;
+
+  border-radius: 8px;
+
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  color: white;
+
+  background:
+    rgba(124, 108, 255, 0.1);
+
+  transform: translateY(-3px);
+}
+
+.footer p {
+  color: var(--text-muted);
+
+  font-size: 0.8rem;
+
+  margin: 0;
+}
+
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
+
+.admin-login {
+  max-width: 420px;
+
+  margin: 4rem auto;
+
+  padding: 2rem;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 25px 60px
+    rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+.admin-dashboard {
+  max-width: 900px;
+
+  margin: auto;
+}
+
+.admin-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 2rem;
+
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+.admin-header button {
+  padding: 0.6rem 1rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  background: var(--accent);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.admin-header button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(124, 108, 255, 0.3);
+}
+
+/* =========================================================
+   ADMIN TABS
+========================================================= */
+
+.admin-tabs {
+  display: flex;
+
+  gap: 0.5rem;
+
+  margin-bottom: 2rem;
+}
+
+.admin-tabs button {
+  padding: 0.65rem 1.1rem;
+
+  border-radius: 9px;
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: var(--text-muted);
+
+  cursor: pointer;
+
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.admin-tabs button:hover {
+  color: white;
+
+  border-color: var(--accent);
+}
+
+.admin-tabs button.active {
+  background: var(--accent);
+
+  color: white;
+
+  border-color: var(--accent);
+
+  box-shadow:
+    0 8px 25px
+    rgba(124, 108, 255, 0.2);
+}
+
+/* =========================================================
+   ADMIN FORM
+========================================================= */
+
+.admin-form {
+  max-width: 100%;
+
+  padding: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+.admin-form h3 {
+  margin-top: 0;
+}
+
+.admin-form button {
+  padding: 0.6rem 1.2rem;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: var(--accent);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.admin-form button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(124, 108, 255, 0.25);
+}
+
+.admin-form .btn-secondary {
+  background:
+    var(--bg-secondary);
+
+  border: 1px solid var(--border);
+}
+
+/* =========================================================
+   ADMIN PROJECTS / MESSAGES
+========================================================= */
+
+.admin-projects-list,
+.admin-messages-list {
+  margin-top: 1rem;
+}
+
+.admin-project-row,
+.admin-message-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+
+  padding: 1rem;
+
+  margin-bottom: 0.7rem;
+
+  border-radius: 11px;
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255, 255, 255, 0.02);
+
+  transition: var(--transition);
+}
+
+.admin-project-row:hover,
+.admin-message-row:hover {
+  transform: translateX(5px);
+
+  border-color:
+    rgba(124, 108, 255, 0.3);
+}
+
+.admin-project-row button,
+.admin-message-row button {
+  margin-left: 0.5rem;
+
+  padding: 0.35rem 0.75rem;
+
+  border-radius: 6px;
+
+  border: 1px solid var(--border);
+
+  background:
+    var(--bg-secondary);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 0.85rem;
+
+  transition: 0.2s ease;
+}
+
+.admin-project-row button:hover,
+.admin-message-row button:hover {
+  border-color: var(--accent);
+
+  transform: translateY(-2px);
+}
+
+.admin-message-meta {
+  color: var(--text-muted);
+
+  font-size: 0.8rem;
+
+  margin-bottom: 0.3rem;
+}
+
+.admin-message-body {
+  color: var(--text-muted);
+
+  font-size: 0.9rem;
+
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  main {
+    padding: 3rem 1.3rem;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    right: 0;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    padding: 1rem;
+
+    background:
+      rgba(7, 8, 13, 0.96);
+
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navbar-links.open {
+    display: flex;
+
+    animation:
+      menuOpen 0.25s ease;
+  }
+
+  @keyframes menuOpen {
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+  }
+
+  .navbar-links a {
+    display: block;
+
+    padding: 0.7rem;
+
+    border-radius: 8px;
+  }
+
+  .navbar-links a:hover {
+    background:
+      rgba(124, 108, 255, 0.08);
+  }
+
+  .hero {
+    min-height: 650px;
+
+    padding: 4rem 0.5rem;
+  }
+
+  .hero::before {
+    width: 380px;
+
+    height: 380px;
+  }
+
+  .hero h1,
+  .hero-name {
+    font-size:
+      clamp(3rem, 16vw, 5rem);
+  }
+
+  .hero-name {
+    gap: 0.16em;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    max-width: none;
+  }
+
+  .admin-project-row,
+  .admin-message-row {
+    flex-direction: column;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  main {
+    padding:
+      2rem 1rem;
+  }
+
+  .navbar {
+    padding:
+      0.9rem 1rem;
+  }
+
+  .hero {
+    min-height: 600px;
+
+    padding:
+      3rem 0.5rem;
+  }
+
+  .hero::before {
+    width: 300px;
+
+    height: 300px;
+  }
+
+  .hero h1,
+  .hero-name {
+    font-size:
+      clamp(2.7rem, 15vw, 4rem);
+  }
+
+  .hero-name {
+    gap: 0.12em;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .contact-details,
+  .admin-login,
+  .admin-form {
+    padding: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}
